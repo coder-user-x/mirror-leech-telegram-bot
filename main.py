@@ -1,6 +1,6 @@
 from threading import Thread
 from flask import Flask
-import bot  # your existing bot module
+import bot  # assuming this is where your bot's main code is
 
 # Dummy web server
 app = Flask(__name__)
@@ -13,8 +13,11 @@ def run_flask():
     app.run(host='0.0.0.0', port=8080)
 
 def run_bot():
-    import bot  # Make sure this runs the bot loop
+    import bot  # This should start the bot
 
 if __name__ == "__main__":
+    # Run Flask in a separate thread
     Thread(target=run_flask).start()
+
+    # Run the bot
     run_bot()
